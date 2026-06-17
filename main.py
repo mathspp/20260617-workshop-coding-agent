@@ -2,8 +2,8 @@ from anthropic import Anthropic
 
 TOOL_INSTRUCTIONS = (
     "If you need to read the contents of a "
-    + "file, reply with the exactly string "
-    + "'tool_call: read('/path/to/file')' "
+    + "file, reply with the exact string "
+    + "'tool_call: read('path/to/file')' "
     + "and I'll send you the contents of the file back."
 )
 

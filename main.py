@@ -21,6 +21,7 @@ while True:
             ...
         else:
             raise RuntimeError(f"Unknown command {user_message}.")
+        continue
 
     context.append(
         {
@@ -32,7 +33,10 @@ while True:
     response = client.messages.create(
         max_tokens=1024,
         messages=context + [
-            {}
+            {
+                "role": "user",
+                "content": TOOL_INSTRUCTIONS,
+            }
         ],
         model="claude-haiku-4-5",
     )

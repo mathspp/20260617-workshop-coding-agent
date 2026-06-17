@@ -1,3 +1,9 @@
+"""
+Handle the tool call and provide the result in the way
+that's expected by the Claude API, as described in
+https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls.
+"""
+
 from anthropic import Anthropic
 
 # --- TOOLS

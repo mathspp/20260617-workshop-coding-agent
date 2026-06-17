@@ -70,6 +70,7 @@ while True:
         print(block)
     print("-" * 20)
     
+    tool_call_blocks = []
     for block in response.content:
         if block.type == "text":
             print(block.text)

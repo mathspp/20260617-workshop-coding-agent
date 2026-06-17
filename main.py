@@ -9,7 +9,12 @@ TOOL_INSTRUCTIONS = (
 
 client = Anthropic()
 
-context = []
+context = [
+    {
+        "role": "user",
+        "content": TOOL_INSTRUCTIONS,
+    }
+]
 
 while True:
     user_message = input(" >>> ").strip()
@@ -32,12 +37,7 @@ while True:
 
     response = client.messages.create(
         max_tokens=1024,
-        messages=context + [
-            {
-                "role": "user",
-                "content": TOOL_INSTRUCTIONS,
-            }
-        ],
+        messages=context,
         model="claude-haiku-4-5",
     )
 

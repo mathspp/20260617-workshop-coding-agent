@@ -96,4 +96,18 @@ while True:
 
     # --- Handle tool calls
     for block in tool_call_blocks:
-        if 
+        ... # Figure out which tool to call and get the result...
+
+        context.append(
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": result,
+                        "is_error": is_error,
+                    }
+                ]
+            }
+        )

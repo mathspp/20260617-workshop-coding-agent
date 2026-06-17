@@ -116,3 +116,5 @@ while True:
                 ]
             }
         )
+
+    need_user_input = response.stop_reason != "tool_use"

@@ -41,6 +41,7 @@ while True:
         model="claude-haiku-4-5",
     )
 
+    print(response.content)
     for block in response.content:
         if block.type == "text":
             print(block.text)

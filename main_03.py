@@ -10,8 +10,8 @@ from anthropic import Anthropic
 TOOL_INSTRUCTIONS = (
     "If you need to read the contents of a "
     + "file, reply with the exact string "
-    + "'tool_call: read('path/to/file')' "
-    + "and I'll send you the contents of the file back."
+    + "'tool_call: read('path/to/file')' and nothing else "
+    + "and you'll get the contents of the file."
 )
 
 client = Anthropic()

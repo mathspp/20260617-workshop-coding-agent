@@ -2,6 +2,8 @@ from anthropic import Anthropic
 
 client = Anthropic()
 
+context = []
+
 while True:
     user_message = input(" >>> ").strip()
 

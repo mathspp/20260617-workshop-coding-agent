@@ -7,6 +7,14 @@ TOOL_INSTRUCTIONS = (
     + "and you'll get the contents of the file."
 )
 
+def read(filepath):
+    from pathlib import Path
+    path = Path(filepath)
+    if not path.exists() or not path.is_file():
+        return "Can't read from there."
+    
+    return path.read_text()
+
 client = Anthropic()
 
 context = [
@@ -55,7 +63,12 @@ while True:
             if block.text.startswith("tool_call"):
                 _, function_call = block.text.split(": ")
                 if function_call.startswith("read"):
-                    filepath = function_call[5:-1]
+                    filepath = (
+                        function_call
+                        .removeprefix("read(")
+                        .removesuffix(")")
+                        .strip("'\"")
+                    )
                     contents = read(filepath)
                 else:
                     raise RuntimeError(f"Unknown function call {function_call}.")

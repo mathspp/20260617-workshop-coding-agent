@@ -14,16 +14,20 @@ def read(filepath):
     return path.read_text()
 
 TOOLS.append(
-    "name": "read",
-    "description": "Read the contents of the given file.",
-    "input_schema": {  # JSON schema
-        "type": "object",
-        "properties": {  # Dictionary with info on all arguments.
-            "filepath": {
-                "type": "string",  # integer, boolean, ...
-            }
-        }
-    },
+    {
+        "name": "read",
+        "description": "Read the contents of the given file.",
+        "input_schema": {  # JSON schema
+            "type": "object",
+            "properties": {  # Dictionary with info on all arguments.
+                "filepath": {
+                    "type": "string",  # integer, boolean, ...
+                    "description": "The relative or absolute path to the file to read.",
+                },
+            },
+            "required": ["filepath"],
+        },
+    }
 )
 
 # ---

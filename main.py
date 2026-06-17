@@ -30,6 +30,48 @@ TOOLS.append(
     }
 )
 
+import subprocess
+
+def bash(command):
+    try:
+        result = subprocess.run(
+            command,
+            shell=True,
+            capture_output=True,
+            text=True,
+            timeout=30  # Add timeout to prevent hanging
+        )
+
+        # Combine stdout and stderr
+        output = result.stdout
+        if result.stderr:
+            output += result.stderr
+
+        # Return (is_error, result)
+        is_error = result.returncode != 0
+        return is_error, output
+    except subprocess.TimeoutExpired:
+        return True, "Command timed out after 30 seconds"
+    except Exception as e:
+        return True, f"Error executing command: {str(e)}"
+
+TOOLS.append(
+    {
+        "name": "bash",
+        "description": "Execute arbitrary bash commands and return the output.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "command": {
+                    "type": "string",
+                    "description": "The bash command to execute.",
+                },
+            },
+            "required": ["command"],
+        },
+    }
+)
+
 # ---
 
 client = Anthropic()
@@ -100,6 +142,8 @@ while True:
         tool_name = block.name
         if tool_name == "read":
             is_error, result = read(block.input["filepath"])
+        elif tool_name == "bash":
+            is_error, result = bash(block.input["command"])
         else:
             raise RuntimeError(f"Unknown tool {tool_name}.")
 

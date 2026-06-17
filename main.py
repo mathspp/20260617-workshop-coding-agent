@@ -96,7 +96,12 @@ while True:
 
     # --- Handle tool calls
     for block in tool_call_blocks:
-        ... # Figure out which tool to call and get the result...
+        # Figure out which tool to call and get the result...
+        tool_name = block.name
+        if tool_name == "read":
+            is_error, result = read(tool_input["filepath"])
+        else:
+            raise RuntimeError(f"Unknown tool {tool_name}.")
 
         context.append(
             {

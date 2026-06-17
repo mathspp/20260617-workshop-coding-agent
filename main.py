@@ -80,5 +80,7 @@ while True:
                     "content": block.text,
                 }
             )
+        elif block.type == "tool_use":
+            tool_call_blocks.append(block)
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")

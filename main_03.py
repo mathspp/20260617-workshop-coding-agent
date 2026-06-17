@@ -1,3 +1,10 @@
+"""
+Based on the format you specify in TOOL_INSTRUCTIONS,
+look for a “tool call” in the output of the LLM and, in case
+there's any, read the file(s) requested and send their contents
+to the LLM in the next message.
+"""
+
 from anthropic import Anthropic
 
 TOOL_INSTRUCTIONS = (

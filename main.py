@@ -9,6 +9,7 @@ TOOL_INSTRUCTIONS = (
 
 def read(filepath):
     from pathlib import Path
+
     path = Path(filepath)
     if not path.exists() or not path.is_file():
         return "Can't read from there."
@@ -69,7 +70,7 @@ while True:
                         .removesuffix(")")
                         .strip("'\"")
                     )
-                    contents = read(filepath)
+                    result = read(filepath)
                 else:
                     raise RuntimeError(f"Unknown function call {function_call}.")
 

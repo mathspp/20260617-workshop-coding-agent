@@ -9,9 +9,9 @@ def read(filepath):
 
     path = Path(filepath)
     if not path.exists() or not path.is_file():
-        return "Can't read from there."
+        return True, ""
     
-    return path.read_text()
+    return False, path.read_text()
 
 TOOLS.append(
     {

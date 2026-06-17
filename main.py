@@ -55,7 +55,8 @@ while True:
             if block.text.startswith("tool_call"):
                 _, function_call = block.text.split(": ")
                 if function_call.startswith("read"):
-                    ...
+                    filepath = function_call[5:-1]
+                    contents = read(filepath)
                 else:
                     raise RuntimeError(f"Unknown function call {function_call}.")
 

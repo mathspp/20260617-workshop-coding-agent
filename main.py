@@ -74,5 +74,12 @@ while True:
                 else:
                     raise RuntimeError(f"Unknown function call {function_call}.")
 
+                context.append(
+                    {
+                        "role": "user",
+                        "content": result,
+                    }
+                )
+
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")

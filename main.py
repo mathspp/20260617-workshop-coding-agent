@@ -71,16 +71,25 @@ while True:
     print("-" * 20)
     
     tool_call_blocks = []
+    content_dictionaries = []
     for block in response.content:
         if block.type == "text":
             print(block.text)
-            context.append(
+            content_dictionaries.append(
                 {
-                    "role": "assistant",
-                    "content": block.text,
+                    "type": "text",
+                    "text": block.text,
                 }
             )
         elif block.type == "tool_use":
             tool_call_blocks.append(block)
+            # ...
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")
+
+    context.append(
+        {
+            "role": "assistant",
+            "content": content_dictionaries,
+        }
+    )

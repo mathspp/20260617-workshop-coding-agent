@@ -75,30 +75,5 @@ while True:
                     "content": block.text,
                 }
             )
-
-            if block.text.startswith("tool_call"):
-                _, function_call = block.text.split(": ")
-                if function_call.startswith("read"):
-                    filepath = (
-                        function_call
-                        .removeprefix("read(")
-                        .removesuffix(")")
-                        .strip("'\"")
-                    )
-                    result = read(filepath)
-                else:
-                    raise RuntimeError(f"Unknown function call {function_call}.")
-
-                context.append(
-                    {
-                        "role": "user",
-                        "content": result,
-                    }
-                )
-
-                need_user_input = False
-            else:
-                need_user_input = True
-
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")

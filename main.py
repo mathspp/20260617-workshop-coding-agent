@@ -99,7 +99,7 @@ while True:
         # Figure out which tool to call and get the result...
         tool_name = block.name
         if tool_name == "read":
-            is_error, result = read(tool_input["filepath"])
+            is_error, result = read(block.input["filepath"])
         else:
             raise RuntimeError(f"Unknown tool {tool_name}.")
 

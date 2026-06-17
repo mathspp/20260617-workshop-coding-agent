@@ -14,7 +14,11 @@ def read(filepath):
     return path.read_text()
 
 TOOLS.append(
-    ...  # tool definition
+    "name": "read",
+    "description": "Read the contents of the given file.",
+    "input_schema": {
+
+    },
 )
 
 # ---

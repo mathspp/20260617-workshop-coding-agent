@@ -53,7 +53,11 @@ while True:
             )
 
             if block.text.startswith("tool_call"):
-                _, function_name = block.text.split(": ")
+                _, function_call = block.text.split(": ")
+                if function_call.startswith("read"):
+                    ...
+                else:
+                    raise RuntimeError(f"Unknown function call {function_call}.")
 
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")

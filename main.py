@@ -51,5 +51,9 @@ while True:
                     "content": block.text,
                 }
             )
+
+            if block.text.startswith("tool_call"):
+                _, function_name = block.text.split(": ")
+
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")

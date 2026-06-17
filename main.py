@@ -7,6 +7,14 @@ context = []
 while True:
     user_message = input(" >>> ").strip()
 
+    if user_message.startswith("/"):
+        if user_message.startswith(("/quit", "/exit")):
+            break
+        elif user_message.startswith("/rewind"):
+            ...
+        else:
+            raise RuntimeError(f"Unknown command {user_message}.")
+
     context.append(
         {
             "role": "user",

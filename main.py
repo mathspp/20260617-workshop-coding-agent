@@ -16,8 +16,13 @@ def read(filepath):
 TOOLS.append(
     "name": "read",
     "description": "Read the contents of the given file.",
-    "input_schema": {
-
+    "input_schema": {  # JSON schema
+        "type": "object",
+        "properties": {  # Dictionary with info on all arguments.
+            "filepath": {
+                "type": "string",  # integer, boolean, ...
+            }
+        }
     },
 )
 

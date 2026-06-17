@@ -93,3 +93,7 @@ while True:
             "content": content_dictionaries,
         }
     )
+
+    # --- Handle tool calls
+    for block in tool_call_blocks:
+        if 

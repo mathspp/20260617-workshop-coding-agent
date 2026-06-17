@@ -1,6 +1,3 @@
-def main():
-    print("Hello from coding-agent!")
+from anthropic import Anthropic
 
-
-if __name__ == "__main__":
-    main()
+client = Anthropic()

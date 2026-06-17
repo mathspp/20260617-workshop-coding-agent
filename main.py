@@ -65,7 +65,11 @@ while True:
         tools=TOOLS,
     )
 
-    print(response.content)
+    print("-" * 20)
+    for block in response.content:
+        print(block)
+    print("-" * 20)
+    
     for block in response.content:
         if block.type == "text":
             print(block.text)

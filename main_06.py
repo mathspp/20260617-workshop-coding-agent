@@ -1,8 +1,8 @@
 """
+ - bash(command, args) — runs the given bash command with the given arguments args
  - write(filepath, content) — writes the given content to the given file
  - insert(filepath, insert_line, insert_text) — inserts the given text, possibly multiline, into the given line of the given file
  - replace(filepath, old_str, new_str) — replaces occurrences of old_str with occurrences of new_str
- - bash(command, args) — runs the given bash command with the given arguments args
 """
 
 from anthropic import Anthropic

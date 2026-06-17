@@ -2,6 +2,8 @@ from anthropic import Anthropic
 
 # --- TOOLS
 
+TOOLS = []
+
 def read(filepath):
     from pathlib import Path
 
@@ -11,14 +13,15 @@ def read(filepath):
     
     return path.read_text()
 
+TOOLS.append(
+    ...  # tool definition
+)
+
+# ---
+
 client = Anthropic()
 
-context = [
-    {
-        "role": "user",
-        "content": TOOL_INSTRUCTIONS,
-    }
-]
+context = []
 
 need_user_input = True
 
@@ -46,6 +49,7 @@ while True:
         max_tokens=1024,
         messages=context,
         model="claude-haiku-4-5",
+        tools=TOOLS,
     )
 
     print(response.content)

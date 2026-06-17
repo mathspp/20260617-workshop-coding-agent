@@ -25,7 +25,14 @@ while True:
         model="claude-haiku-4-5",
     )
 
-    for block in response:
+    for block in response.content:
         if block.type == "text":
             print(block.text)
-    print(response.content)
+            context.append(
+                {
+                    "role": "assistant",
+                    "content": block.text,
+                }
+            )
+        else:
+            raise RuntimeError(f"Can't handle block type {block.type}.")

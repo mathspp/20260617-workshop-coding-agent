@@ -15,6 +15,10 @@ context = []
 while True:
     user_message = input(" >>> ").strip()
 
+    if user_message.startswith("/"):
+        if user_message.startswith("/quit", "/exit"):
+            break
+
     context.append(
         {
             "role": "user",

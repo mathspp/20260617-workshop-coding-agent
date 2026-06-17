@@ -7,6 +7,13 @@ context = []
 while True:
     user_message = input(" >>> ").strip()
 
+    context.append(
+        {
+            "role": "user",
+            "content": user_message,
+        }
+    )
+
     response = client.messages.create(
         max_tokens=1024,
         messages=[

@@ -83,7 +83,7 @@ while True:
             )
         elif block.type == "tool_use":
             tool_call_blocks.append(block)
-            content_dictionaries.append(block.as_dict())
+            content_dictionaries.append(block.to_dict())
         else:
             raise RuntimeError(f"Can't handle block type {block.type}.")
 

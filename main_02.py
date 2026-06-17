@@ -1,3 +1,10 @@
+"""
+Add the command `/exit` to stop the agent.
+Prepend each message (yours or the agent's) with the index.
+Add a slash command `/rewind IDX` that “rewinds” the context by keeping only
+the messages `context[:idx]`. You may want to reprint the chat to update it.
+"""
+
 from anthropic import Anthropic
 
 client = Anthropic()
